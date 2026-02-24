@@ -1,0 +1,251 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-14",
+  "description": "Complete skills manifest for auto-provisioning Claude Code agents",
+  "marketplaces": [
+    {
+      "name": "claude-plugins-official",
+      "source": "anthropics/claude-plugins-official",
+      "type": "github",
+      "autoUpdate": true
+    },
+    {
+      "name": "claude-code-plugins",
+      "source": "anthropics/claude-code",
+      "type": "github",
+      "autoUpdate": true
+    },
+    {
+      "name": "anthropic-agent-skills",
+      "source": "anthropics/skills",
+      "type": "github",
+      "autoUpdate": true
+    }
+  ],
+  "plugins": {
+    "code_intelligence": [
+      "context7@claude-plugins-official",
+      "typescript-lsp@claude-plugins-official",
+      "kotlin-lsp@claude-plugins-official",
+      "php-lsp@claude-plugins-official",
+      "serena@claude-plugins-official"
+    ],
+    "integrations": [
+      "github@claude-plugins-official",
+      "figma@claude-plugins-official",
+      "vercel@claude-plugins-official",
+      "firebase@claude-plugins-official",
+      "stripe@claude-plugins-official",
+      "firecrawl@claude-plugins-official",
+      "huggingface-skills@claude-plugins-official"
+    ],
+    "dev_workflows": [
+      "superpowers@claude-plugins-official",
+      "playwright@claude-plugins-official",
+      "commit-commands@claude-plugins-official",
+      "pr-review-toolkit@claude-plugins-official",
+      "agent-sdk-dev@claude-plugins-official",
+      "claude-code-setup@claude-plugins-official"
+    ],
+    "demo_marketplace": [
+      "claude-opus-4-5-migration@claude-code-plugins",
+      "code-review@claude-code-plugins",
+      "commit-commands@claude-code-plugins",
+      "frontend-design@claude-code-plugins"
+    ]
+  },
+  "skills": {
+    "ai_image_video": {
+      "description": "AI image and video generation",
+      "prp_types": ["design", "poc_react", "base"],
+      "skills": [
+        "nano-banana-pro",
+        "nano-banana-pro-prompts-recommend-skill",
+        "flux-best-practices",
+        "midjourney-replicate-flux",
+        "seedream-image",
+        "seedance",
+        "image-upscaling",
+        "remotion-best-practices"
+      ]
+    },
+    "logo_branding": {
+      "description": "Logo creation and brand identity",
+      "prp_types": ["design", "base", "nextjs"],
+      "skills": [
+        "logo-creator",
+        "logo-design-guide",
+        "favicon-gen",
+        "svg-icon-generator"
+      ]
+    },
+    "typography": {
+      "description": "Typography, fonts, and type systems",
+      "prp_types": ["design", "nextjs", "flutter", "base", "poc_react"],
+      "skills": [
+        "typography",
+        "typography-expert",
+        "web-typography",
+        "brand-typography-systems",
+        "font-pairing-suggester"
+      ]
+    },
+    "ui_ux_design": {
+      "description": "UI/UX design, components, and visual systems",
+      "prp_types": ["design", "nextjs", "flutter", "base", "poc_react", "fullstack"],
+      "skills": [
+        "ui-ux-pro-max",
+        "ui-design-system",
+        "frontend-design",
+        "web-design-guidelines",
+        "icon-design",
+        "better-icons",
+        "mobile-touch",
+        "youtube-thumbnail-design"
+      ]
+    },
+    "css_layout": {
+      "description": "CSS frameworks and layout patterns",
+      "prp_types": ["nextjs", "base", "poc_react", "design"],
+      "skills": [
+        "tailwind-design-system",
+        "tailwindcss-advanced-layouts"
+      ]
+    },
+    "react_nextjs": {
+      "description": "React and Next.js development",
+      "prp_types": ["nextjs", "typescript", "base", "poc_react", "fullstack"],
+      "skills": [
+        "react-best-practices",
+        "react-components",
+        "nextjs-supabase-auth",
+        "vercel-react-native-skills"
+      ]
+    },
+    "flutter": {
+      "description": "Flutter and Dart mobile development",
+      "prp_types": ["flutter", "fullstack"],
+      "skills": [
+        "flutter-expert",
+        "flutter-adaptive-ui",
+        "flutter-animations",
+        "flutter-internationalization",
+        "flutter-testing"
+      ]
+    },
+    "backend": {
+      "description": "Backend APIs and server-side development",
+      "prp_types": ["base", "fullstack", "typescript", "spec", "task"],
+      "skills": [
+        "python-pro",
+        "nodejs-backend-patterns",
+        "better-auth-best-practices"
+      ]
+    },
+    "ai_ml": {
+      "description": "AI/ML model integration",
+      "prp_types": ["base", "fullstack"],
+      "skills": [
+        "replicate-cli",
+        "replicate-integration"
+      ]
+    },
+    "browser_automation": {
+      "description": "Browser automation and AI agents",
+      "prp_types": ["base", "n8n", "agent"],
+      "skills": [
+        "agent-browser",
+        "agent-tools",
+        "agent-ui",
+        "browser-use"
+      ]
+    },
+    "content_writing": {
+      "description": "Content creation and copywriting",
+      "prp_types": ["design", "nextjs", "base"],
+      "skills": [
+        "human-writing",
+        "humanizer-zh",
+        "social-content"
+      ]
+    },
+    "seo_audit": {
+      "description": "SEO and website auditing",
+      "prp_types": ["nextjs", "base"],
+      "skills": [
+        "seo-audit",
+        "audit-website"
+      ]
+    },
+    "document_pdf": {
+      "description": "Document and PDF generation",
+      "prp_types": ["base"],
+      "skills": [
+        "html-to-pdf",
+        "markdown-to-pdf",
+        "extracting-pdf-text"
+      ]
+    },
+    "business": {
+      "description": "Business strategy and finance",
+      "prp_types": ["planning", "fullstack"],
+      "skills": [
+        "pricing-strategy",
+        "finance-expert"
+      ]
+    },
+    "diagrams": {
+      "description": "Architecture diagrams and visualization",
+      "prp_types": ["planning", "fullstack", "base"],
+      "skills": [
+        "eraser-diagrams"
+      ]
+    },
+    "mcp_integration": {
+      "description": "MCP server building and API integration",
+      "prp_types": ["base", "n8n"],
+      "skills": [
+        "mcp-builder",
+        "api-bible-automation"
+      ]
+    },
+    "agent_meta": {
+      "description": "Agent capabilities and self-improvement",
+      "prp_types": ["agent", "base"],
+      "skills": [
+        "proactive-agent",
+        "self-learning",
+        "skill-creator",
+        "find-skills"
+      ]
+    },
+    "media": {
+      "description": "Music and media tools",
+      "prp_types": ["base"],
+      "skills": [
+        "music-downloader"
+      ]
+    },
+    "ai_components": {
+      "description": "AI interface components",
+      "prp_types": ["nextjs", "base"],
+      "skills": [
+        "ai-elements"
+      ]
+    }
+  },
+  "prp_type_to_skill_categories": {
+    "nextjs": ["ui_ux_design", "typography", "css_layout", "react_nextjs", "backend", "content_writing", "seo_audit", "ai_components", "logo_branding"],
+    "flutter": ["flutter", "ui_ux_design", "typography"],
+    "base": ["ui_ux_design", "typography", "css_layout", "react_nextjs", "backend", "ai_ml", "content_writing", "seo_audit", "document_pdf", "diagrams", "mcp_integration"],
+    "typescript": ["react_nextjs", "backend", "css_layout"],
+    "fullstack": ["ui_ux_design", "typography", "react_nextjs", "flutter", "backend", "ai_ml", "business", "diagrams"],
+    "design": ["ai_image_video", "logo_branding", "typography", "ui_ux_design", "css_layout", "content_writing"],
+    "poc_react": ["ui_ux_design", "typography", "css_layout", "react_nextjs", "content_writing"],
+    "planning": ["business", "diagrams"],
+    "n8n": ["browser_automation", "mcp_integration"],
+    "spec": ["backend"],
+    "task": ["backend"],
+    "agent": ["browser_automation", "agent_meta"]
+  }
+}

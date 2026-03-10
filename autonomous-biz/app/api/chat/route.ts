@@ -1,15 +1,15 @@
 import { streamText, UIMessage, convertToModelMessages, tool, stepCountIs } from 'ai'
 
 export const dynamic = 'force-dynamic'
-import { anthropic } from '@ai-sdk/anthropic'
 import { z } from 'zod'
 import { buildSystemPrompt } from '@/lib/ai/prompts'
+import { getAIModel } from '@/lib/ai/provider'
 
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json()
 
   const result = streamText({
-    model: anthropic('claude-sonnet-4-6'),
+    model: await getAIModel(),
     system: buildSystemPrompt(),
     messages: await convertToModelMessages(messages),
     tools: {

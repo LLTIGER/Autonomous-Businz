@@ -1,0 +1,54 @@
+[
+  {
+    "id": "empire_flippers",
+    "name": "Empire Flippers",
+    "type": "marketplace",
+    "baseUrl": "https://api.empireflippers.com/api/v1",
+    "authMethod": "none",
+    "rateLimit": "1/sec",
+    "enabled": true,
+    "requiredEnvVars": [],
+    "description": "Curated marketplace for buying and selling established online businesses. Listings are vetted with verified financials."
+  },
+  {
+    "id": "product_hunt",
+    "name": "Product Hunt",
+    "type": "discovery",
+    "baseUrl": "https://api.producthunt.com/v2/api/graphql",
+    "authMethod": "oauth2",
+    "rateLimit": "6250pts/15min",
+    "enabled": true,
+    "requiredEnvVars": [
+      "PRODUCT_HUNT_CLIENT_ID",
+      "PRODUCT_HUNT_CLIENT_SECRET"
+    ],
+    "description": "Product discovery platform. Useful for identifying trending niches, competitive landscape, and emerging tools."
+  },
+  {
+    "id": "flippa",
+    "name": "Flippa",
+    "type": "marketplace",
+    "baseUrl": "https://api.flippa.com/v3",
+    "authMethod": "oauth2",
+    "rateLimit": "unknown",
+    "enabled": false,
+    "requiredEnvVars": [
+      "FLIPPA_CLIENT_ID",
+      "FLIPPA_CLIENT_SECRET"
+    ],
+    "description": "Open marketplace for buying and selling online businesses, domains, and apps. Higher volume but less curated than Empire Flippers."
+  },
+  {
+    "id": "harmonic",
+    "name": "Harmonic.ai",
+    "type": "intelligence",
+    "baseUrl": "https://api.harmonic.ai",
+    "authMethod": "apikey",
+    "rateLimit": "10/sec",
+    "enabled": true,
+    "requiredEnvVars": [
+      "HARMONIC_API_KEY"
+    ],
+    "description": "Company intelligence platform for discovering startups, tracking funding rounds, and identifying market trends."
+  }
+]

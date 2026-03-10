@@ -1,0 +1,51 @@
+{
+  "category": "content_automation",
+  "sections": {
+    "Goal": "Build an automated content pipeline that generates, publishes, and monetizes [CONTENT_TYPE] for [TARGET_AUDIENCE] across [PLATFORMS]. The system handles research, creation, publishing, and revenue optimization autonomously.",
+    "Why": "Content scales with audience, not effort. AI can produce content at a pace impossible for humans — hundreds of articles, videos, or newsletters per month. Revenue compounds as content libraries grow and attract organic traffic over time.",
+    "What": "An automated content system with: AI-driven topic research and trending analysis, content generation pipeline (text/video/audio), multi-platform publishing automation, monetization integration (ads, affiliate, sponsorship), and performance analytics with feedback loops.",
+    "Context": "Tech stack: Next.js 15 (App Router), YouTube API for video publishing, OpenAI for content generation, Vercel for hosting. Content quality is critical — follow Golden Rule #2 (Zero-Waste Mindset) to validate every piece before publishing. Use Progressive Autonomy: start with human review of all content, then gradually automate approval for content types with consistent quality scores.",
+    "Blueprint": "Phase 1: Content research engine — identify trending topics and keywords in the niche. Phase 2: Generation pipeline — AI creates content drafts with quality scoring. Phase 3: Publishing automation — schedule and distribute to target platforms. Phase 4: Monetization setup — integrate ad networks, affiliate links, sponsorship management. Phase 5: Analytics and feedback loop — track performance and adjust generation parameters.",
+    "Validation": "Level 1: TypeScript compiles, ESLint passes. Level 2: Unit tests for content generation and publishing logic. Level 3: Integration test — generate content, verify quality score, publish to staging. Level 4: Platform API integration test — verify content appears correctly on each platform. Level 5: Revenue tracking test — verify monetization links and analytics are working."
+  },
+  "techStack": [
+    "Next.js",
+    "YouTube API",
+    "OpenAI",
+    "Vercel"
+  ],
+  "validationGates": [
+    {
+      "level": 1,
+      "name": "Syntax & Types",
+      "command": "npx tsc --noEmit && npx eslint .",
+      "description": "Ensure code compiles and passes linting"
+    },
+    {
+      "level": 2,
+      "name": "Unit Tests",
+      "command": "npx jest --coverage --passWithNoTests",
+      "description": "Run all unit tests with coverage reporting"
+    },
+    {
+      "level": 3,
+      "name": "Content Quality Check",
+      "command": "node scripts/validate-content-quality.js --sample 5",
+      "description": "Generate sample content and verify it passes quality thresholds"
+    },
+    {
+      "level": 4,
+      "name": "Platform Publishing Test",
+      "command": "npx playwright test tests/publishing-flow.spec.ts",
+      "description": "End-to-end test of content publishing to staging environments"
+    }
+  ],
+  "commonPitfalls": [
+    "Publishing AI content without quality review — always score and threshold-check before publishing",
+    "Ignoring platform-specific content guidelines — each platform has rules that can get accounts banned",
+    "Not diversifying across platforms — a single platform ban can wipe out the entire business",
+    "Generating duplicate or near-duplicate content — search engines penalize thin and duplicate content",
+    "Missing attribution for sourced information — always cite sources to maintain credibility",
+    "Over-optimizing for SEO at the expense of readability — content must serve the audience first"
+  ]
+}

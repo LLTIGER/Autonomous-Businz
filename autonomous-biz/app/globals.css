@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: oklch(0.97 0.01 250);
+  --color-brand-100: oklch(0.93 0.03 250);
+  --color-brand-500: oklch(0.55 0.18 250);
+  --color-brand-600: oklch(0.48 0.18 250);
+  --color-brand-900: oklch(0.25 0.09 250);
+  --color-surface: oklch(0.98 0.005 250);
+  --color-surface-dark: oklch(0.15 0.02 250);
+  --color-success: oklch(0.65 0.15 145);
+  --color-warning: oklch(0.75 0.15 85);
+  --color-danger: oklch(0.60 0.20 25);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.5 0.02 250 / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.5 0.02 250 / 0.5);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: oklch(0.55 0.18 250 / 0.2);
+}

@@ -1,0 +1,51 @@
+{
+  "category": "ecommerce",
+  "sections": {
+    "Goal": "Build an automated e-commerce store selling [PRODUCT_TYPE] to [TARGET_AUDIENCE] using [FULFILLMENT_METHOD]. The system handles product sourcing/generation, listing management, order fulfillment, and customer service autonomously.",
+    "Why": "E-commerce combined with print-on-demand or dropshipping eliminates inventory risk while AI handles product design, listing optimization, and customer service. Profit margins improve as the AI learns which products sell best and optimizes accordingly.",
+    "What": "An e-commerce storefront with: product catalog with AI-optimized listings, shopping cart and Stripe checkout, automated order routing to fulfillment partners (Printful, suppliers), customer service chatbot, and inventory/margin analytics dashboard.",
+    "Context": "Tech stack: Next.js 15 (App Router), Stripe for payments, Printful API for print-on-demand fulfillment, Vercel for hosting. Follow Golden Rules — Governance First (human approval for new product lines), Validation Loops (verify fulfillment partner status before routing orders), and Multi-Revenue Streams (cross-sell and upsell automatically).",
+    "Blueprint": "Phase 1: Storefront with product pages, cart, and checkout. Phase 2: Fulfillment integration — connect to Printful or supplier APIs for automated order routing. Phase 3: AI product generation — create designs and optimize listings based on trends. Phase 4: Customer service automation — order tracking, returns, FAQ chatbot. Phase 5: Analytics — track margins, bestsellers, and customer lifetime value.",
+    "Validation": "Level 1: TypeScript compiles, ESLint passes. Level 2: Unit tests for cart, checkout, and order routing logic. Level 3: Integration test — add to cart, checkout, verify order sent to fulfillment partner. Level 4: Fulfillment API test — verify order status tracking and webhook handling. Level 5: Customer service chatbot test — verify common queries are handled correctly."
+  },
+  "techStack": [
+    "Next.js",
+    "Stripe",
+    "Printful API",
+    "Vercel"
+  ],
+  "validationGates": [
+    {
+      "level": 1,
+      "name": "Syntax & Types",
+      "command": "npx tsc --noEmit && npx eslint .",
+      "description": "Ensure code compiles and passes linting"
+    },
+    {
+      "level": 2,
+      "name": "Unit Tests",
+      "command": "npx jest --coverage --passWithNoTests",
+      "description": "Run all unit tests with coverage reporting"
+    },
+    {
+      "level": 3,
+      "name": "Order Flow Test",
+      "command": "npx playwright test tests/order-flow.spec.ts",
+      "description": "End-to-end test of the complete order and fulfillment flow"
+    },
+    {
+      "level": 4,
+      "name": "Fulfillment Integration",
+      "command": "node scripts/test-fulfillment-api.js",
+      "description": "Verify order routing and status tracking with fulfillment partner"
+    }
+  ],
+  "commonPitfalls": [
+    "Not accounting for fulfillment partner downtime — always have fallback routing or queue orders",
+    "Ignoring shipping cost calculations — margins can disappear if shipping is not factored into pricing",
+    "Missing order status webhooks — customers need real-time tracking updates",
+    "Not handling returns and refunds gracefully — automate the return flow to reduce support burden",
+    "Over-relying on a single fulfillment partner — diversify to reduce supply chain risk",
+    "Skipping product mockup quality — poor product images directly reduce conversion rates"
+  ]
+}

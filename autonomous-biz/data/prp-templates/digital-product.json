@@ -1,0 +1,51 @@
+{
+  "category": "digital_products",
+  "sections": {
+    "Goal": "Build an automated digital product store that generates, lists, and sells [PRODUCT_TYPE] to [TARGET_AUDIENCE]. The system handles product creation, storefront management, payments, and delivery with minimal human intervention.",
+    "Why": "Digital products have near-zero marginal cost — create once, sell infinitely. Combined with AI generation, the entire pipeline from creation to delivery can be automated. This category scores highest on autonomy (9/10) because fulfillment requires zero human effort after setup.",
+    "What": "A web storefront with: AI-powered product generation pipeline, product listings with previews and descriptions, Stripe checkout with instant delivery via S3 signed URLs, customer accounts with download history, and automated email sequences for upsells.",
+    "Context": "Tech stack: Next.js 15 (App Router), Stripe for payments, S3 for file storage and delivery, Vercel for hosting. Products are generated using AI (OpenAI for text, Replicate for images) and stored in S3. Follow Golden Rules — especially Zero-Waste Mindset (validate every generated product before listing) and Build Systems Not Tasks (reusable generation pipeline).",
+    "Blueprint": "Phase 1: Storefront with product listing pages, cart, and Stripe checkout. Phase 2: S3 integration for secure file storage and signed-URL delivery. Phase 3: AI product generation pipeline with quality validation. Phase 4: Automated email sequences (welcome, delivery, upsell). Phase 5: Analytics dashboard tracking sales, conversion rates, and popular products.",
+    "Validation": "Level 1: TypeScript compiles, ESLint passes. Level 2: Unit tests for payment flow and delivery logic. Level 3: Integration test — browse, purchase, receive download link, access file. Level 4: Verify S3 signed URLs expire correctly and cannot be shared. Level 5: Test AI generation pipeline produces valid, sellable products."
+  },
+  "techStack": [
+    "Next.js",
+    "Stripe",
+    "S3",
+    "Vercel"
+  ],
+  "validationGates": [
+    {
+      "level": 1,
+      "name": "Syntax & Types",
+      "command": "npx tsc --noEmit && npx eslint .",
+      "description": "Ensure code compiles and passes linting"
+    },
+    {
+      "level": 2,
+      "name": "Unit Tests",
+      "command": "npx jest --coverage --passWithNoTests",
+      "description": "Run all unit tests with coverage reporting"
+    },
+    {
+      "level": 3,
+      "name": "Purchase Flow Test",
+      "command": "npx playwright test tests/purchase-flow.spec.ts",
+      "description": "End-to-end test of the complete purchase and delivery flow"
+    },
+    {
+      "level": 4,
+      "name": "S3 Delivery Verification",
+      "command": "node scripts/verify-s3-delivery.js",
+      "description": "Verify signed URLs generate correctly and expire as configured"
+    }
+  ],
+  "commonPitfalls": [
+    "Not validating AI-generated products before listing — always run quality checks on generated content",
+    "Using permanent S3 URLs instead of signed URLs — customers could share direct download links",
+    "Missing webhook handling for failed payments — always reconcile Stripe events with order status",
+    "Not optimizing product preview images — large previews slow page load and hurt conversion",
+    "Ignoring content licensing — ensure AI-generated content is commercially usable without restrictions",
+    "Skipping email delivery confirmation — customers need immediate proof of purchase and download access"
+  ]
+}

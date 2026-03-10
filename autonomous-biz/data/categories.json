@@ -1,0 +1,103 @@
+[
+  {
+    "id": "digital_products",
+    "name": "Digital Products",
+    "autonomyScore": 9,
+    "examples": [
+      "Templates",
+      "Courses",
+      "Prompt libraries",
+      "AI-generated assets"
+    ],
+    "revenueModel": "One-time + subscription",
+    "typicalMonthly": "$500-$50,000",
+    "description": "Create once, sell infinitely. Digital products have the highest autonomy potential because fulfillment is fully automated after creation.",
+    "keyMetrics": ["Conversion rate", "Average order value", "Customer acquisition cost"]
+  },
+  {
+    "id": "ai_as_a_service",
+    "name": "AI-as-a-Service",
+    "autonomyScore": 8,
+    "examples": [
+      "Custom AI agents",
+      "Workflow automation",
+      "AI consulting platforms"
+    ],
+    "revenueModel": "Usage-based + subscription",
+    "typicalMonthly": "$1,000-$100,000",
+    "description": "Package AI capabilities as managed services. Clients pay for outcomes rather than building their own AI infrastructure.",
+    "keyMetrics": ["Monthly recurring revenue", "API call volume", "Churn rate"]
+  },
+  {
+    "id": "content_automation",
+    "name": "Content Automation",
+    "autonomyScore": 8,
+    "examples": [
+      "AI YouTube channels",
+      "Newsletters",
+      "Affiliate sites",
+      "Blog networks"
+    ],
+    "revenueModel": "Advertising + affiliate + sponsorship",
+    "typicalMonthly": "$200-$20,000",
+    "description": "Automated content generation and distribution across platforms. Revenue scales with audience size and engagement.",
+    "keyMetrics": ["Traffic volume", "RPM (revenue per mille)", "Subscriber growth rate"]
+  },
+  {
+    "id": "saas_micro_saas",
+    "name": "SaaS / Micro-SaaS",
+    "autonomyScore": 8,
+    "examples": [
+      "Niche tools",
+      "API services",
+      "Developer tools",
+      "Vertical SaaS"
+    ],
+    "revenueModel": "Subscription (MRR)",
+    "typicalMonthly": "$500-$200,000",
+    "description": "Software products solving specific problems with recurring subscription revenue. Micro-SaaS targets narrow niches with high willingness to pay.",
+    "keyMetrics": ["MRR", "Churn rate", "LTV:CAC ratio"]
+  },
+  {
+    "id": "marketplace_platform",
+    "name": "Marketplace / Platform",
+    "autonomyScore": 7,
+    "examples": [
+      "B2B directories",
+      "Niche marketplaces",
+      "Service platforms"
+    ],
+    "revenueModel": "Commission + listing fees + subscription",
+    "typicalMonthly": "$1,000-$50,000",
+    "description": "Connect buyers and sellers in a niche vertical. Revenue grows with network effects as both sides of the marketplace scale.",
+    "keyMetrics": ["Gross merchandise volume", "Take rate", "Liquidity"]
+  },
+  {
+    "id": "ecommerce",
+    "name": "E-Commerce",
+    "autonomyScore": 6,
+    "examples": [
+      "Print-on-demand",
+      "Dropshipping",
+      "Digital downloads"
+    ],
+    "revenueModel": "Product margin",
+    "typicalMonthly": "$500-$30,000",
+    "description": "Sell physical or digital products through automated storefronts. Best when combined with print-on-demand or dropshipping to eliminate inventory.",
+    "keyMetrics": ["Gross margin", "Average order value", "Return rate"]
+  },
+  {
+    "id": "ai_trading_finance",
+    "name": "AI Trading & Finance",
+    "autonomyScore": 6,
+    "examples": [
+      "Algorithmic trading",
+      "Robo-advisory",
+      "Financial analytics"
+    ],
+    "revenueModel": "Performance fees + subscription",
+    "typicalMonthly": "Variable",
+    "description": "AI-driven financial analysis, trading signals, or portfolio management. High reward potential but requires careful risk management and compliance.",
+    "keyMetrics": ["Sharpe ratio", "Max drawdown", "AUM"]
+  }
+]

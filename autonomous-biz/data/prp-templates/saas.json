@@ -1,0 +1,51 @@
+{
+  "category": "saas_micro_saas",
+  "sections": {
+    "Goal": "Build a production-ready SaaS application that solves [PROBLEM] for [TARGET_AUDIENCE] with subscription-based pricing. The system must handle user authentication, billing, core functionality, and monitoring autonomously.",
+    "Why": "SaaS provides predictable recurring revenue (MRR) and scales without proportional cost increases. Micro-SaaS targeting underserved niches can reach profitability with fewer than 100 customers. This business model has the highest ceiling for autonomous operation.",
+    "What": "A web application with: user registration and authentication, subscription management via Stripe, core feature delivering [VALUE_PROPOSITION], usage analytics dashboard, automated onboarding flow, and self-service support via AI chat.",
+    "Context": "Tech stack: Next.js 15 (App Router), PostgreSQL via Prisma ORM, Stripe for billing, Vercel for hosting. Follow the 10 Golden Rules — especially Governance First (approval gates for pricing changes), Validation Loops (automated tests), and Progressive Autonomy (launch manually, then automate). Reference existing patterns in the codebase for API routes and component structure.",
+    "Blueprint": "Phase 1: Set up project with auth (NextAuth.js), database schema, and landing page. Phase 2: Implement core feature as API routes with input validation. Phase 3: Integrate Stripe subscriptions with webhook handlers. Phase 4: Add usage tracking, analytics dashboard, and monitoring. Phase 5: Automated onboarding, email sequences, and AI-powered support.",
+    "Validation": "Level 1: TypeScript compiles with zero errors, ESLint passes. Level 2: Unit tests pass for all API routes and core logic. Level 3: Integration test — sign up, subscribe, use core feature, cancel. Level 4: Load test — handle 100 concurrent users. Level 5: Stripe webhook test with CLI."
+  },
+  "techStack": [
+    "Next.js",
+    "Stripe",
+    "PostgreSQL",
+    "Vercel"
+  ],
+  "validationGates": [
+    {
+      "level": 1,
+      "name": "Syntax & Types",
+      "command": "npx tsc --noEmit && npx eslint .",
+      "description": "Ensure code compiles and passes linting"
+    },
+    {
+      "level": 2,
+      "name": "Unit Tests",
+      "command": "npx jest --coverage --passWithNoTests",
+      "description": "Run all unit tests with coverage reporting"
+    },
+    {
+      "level": 3,
+      "name": "Integration Tests",
+      "command": "npx playwright test",
+      "description": "End-to-end tests for critical user flows"
+    },
+    {
+      "level": 4,
+      "name": "Stripe Webhooks",
+      "command": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
+      "description": "Verify Stripe webhook handling works correctly"
+    }
+  ],
+  "commonPitfalls": [
+    "Not handling Stripe webhook idempotency — always check event IDs to prevent duplicate processing",
+    "Storing sensitive data in client-side state — keep API keys and tokens server-side only",
+    "Missing rate limiting on API routes — add middleware to prevent abuse from day one",
+    "Not setting up database migrations properly — use Prisma migrate for reproducible schema changes",
+    "Ignoring error boundaries — wrap key components to prevent full-app crashes from component errors",
+    "Skipping subscription lifecycle edge cases — handle upgrades, downgrades, failed payments, and cancellations"
+  ]
+}

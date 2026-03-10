@@ -1,0 +1,51 @@
+{
+  "category": "marketplace_platform",
+  "sections": {
+    "Goal": "Build a two-sided marketplace connecting [SELLERS] with [BUYERS] in the [NICHE] vertical. The system handles listing management, matching, payments via Stripe Connect, and trust/safety autonomously.",
+    "Why": "Marketplaces benefit from network effects — value increases as both sides grow. Once critical mass is achieved, the platform becomes self-sustaining. Commission-based revenue means zero inventory risk and income scales with transaction volume.",
+    "What": "A marketplace platform with: seller onboarding and listing management, buyer search and discovery with AI-powered matching, Stripe Connect for split payments and escrow, review and reputation system, dispute resolution workflow, and admin dashboard for monitoring.",
+    "Context": "Tech stack: Next.js 15 (App Router), Stripe Connect for split payments, PostgreSQL via Prisma ORM, Vercel for hosting. Follow Golden Rules — Governance First (human approval for dispute resolutions over threshold), Human-in-the-Loop (flag suspicious listings for review), and Fractal Organization (marketplace operates independently with own monitoring).",
+    "Blueprint": "Phase 1: Core marketplace — seller listings, buyer search, and basic profiles. Phase 2: Stripe Connect integration — split payments, seller payouts, escrow for services. Phase 3: AI matching — recommend listings to buyers based on preferences and history. Phase 4: Trust and safety — review system, fraud detection, automated dispute resolution. Phase 5: Growth tools — featured listings, analytics for sellers, promotional campaigns.",
+    "Validation": "Level 1: TypeScript compiles, ESLint passes. Level 2: Unit tests for matching algorithm, payment splits, and listing logic. Level 3: Integration test — seller lists, buyer purchases, payment splits correctly, seller receives payout. Level 4: Stripe Connect onboarding test — verify seller account creation and verification flow. Level 5: Dispute resolution test — verify escalation and resolution workflow."
+  },
+  "techStack": [
+    "Next.js",
+    "Stripe Connect",
+    "PostgreSQL",
+    "Vercel"
+  ],
+  "validationGates": [
+    {
+      "level": 1,
+      "name": "Syntax & Types",
+      "command": "npx tsc --noEmit && npx eslint .",
+      "description": "Ensure code compiles and passes linting"
+    },
+    {
+      "level": 2,
+      "name": "Unit Tests",
+      "command": "npx jest --coverage --passWithNoTests",
+      "description": "Run all unit tests with coverage reporting"
+    },
+    {
+      "level": 3,
+      "name": "Marketplace Flow Test",
+      "command": "npx playwright test tests/marketplace-flow.spec.ts",
+      "description": "End-to-end test of listing, purchase, and payout flow"
+    },
+    {
+      "level": 4,
+      "name": "Stripe Connect Test",
+      "command": "node scripts/test-stripe-connect.js",
+      "description": "Verify seller onboarding, payment splits, and payout scheduling"
+    }
+  ],
+  "commonPitfalls": [
+    "Solving the chicken-and-egg problem — seed one side of the marketplace before launching the other",
+    "Not handling Stripe Connect onboarding failures — sellers abandon if KYC flow is confusing",
+    "Missing escrow for services — buyers need protection when paying for work not yet delivered",
+    "Ignoring fraud detection — marketplaces attract bad actors; implement automated flagging early",
+    "Setting commission rates too high initially — keep take rates low to attract early adopters",
+    "Not building trust signals — reviews, verification badges, and response times are critical for conversion"
+  ]
+}

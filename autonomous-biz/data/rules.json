@@ -1,0 +1,143 @@
+[
+  {
+    "id": "governance-first",
+    "number": 1,
+    "title": "Governance First",
+    "description": "Define action boundaries, permissions, and human checkpoints before anything runs autonomously.",
+    "implementation": "4 human approval gates in chat flow, audit trail in SQLite.",
+    "source": "Singapore Model AI Governance Framework 2026",
+    "subRules": [
+      "Map every autonomous action to a risk level (low/medium/high/critical) before deployment",
+      "Require explicit human approval for any action involving financial transactions over $100",
+      "Maintain immutable audit logs for every autonomous decision with timestamp, context, and outcome",
+      "Review and update governance boundaries monthly as the system learns and scales"
+    ]
+  },
+  {
+    "id": "zero-waste-mindset",
+    "number": 2,
+    "title": "Zero-Waste Mindset",
+    "description": "Zero waste, zero defects, zero downtime.",
+    "implementation": "Validation loops at every stage, error handling, health monitoring.",
+    "source": "World Class Manufacturing methodology",
+    "subRules": [
+      "Every pipeline stage must validate its output before passing to the next stage",
+      "Implement automatic retry with exponential backoff for transient failures",
+      "Monitor uptime and set alerts for any service degradation above 0.1% error rate",
+      "Track resource utilization and eliminate idle compute, unused APIs, and redundant processes"
+    ]
+  },
+  {
+    "id": "agentic-constitution",
+    "number": 3,
+    "title": "Agentic Constitution",
+    "description": "Every autonomous business needs a constitution defining what AI can and cannot do.",
+    "implementation": "PRP includes explicit capability boundaries.",
+    "source": "CIO Agentic Constitution framework",
+    "subRules": [
+      "Document explicit capability boundaries for each AI agent in a machine-readable format",
+      "Define escalation paths for edge cases the AI cannot handle autonomously",
+      "Publish the constitution alongside the business so stakeholders understand AI limits",
+      "Version-control the constitution and require human sign-off on any changes to AI permissions"
+    ]
+  },
+  {
+    "id": "human-in-the-loop",
+    "number": 4,
+    "title": "Human-in-the-Loop",
+    "description": "Autonomous for routine, human approval for high-stakes/irreversible actions.",
+    "implementation": "ApprovalGate component, all deployments require human click.",
+    "source": "Industry best practice for AI safety",
+    "subRules": [
+      "Classify every action as routine (auto-approve), notable (notify), or critical (block until approved)",
+      "Implement an ApprovalGate UI component that clearly shows what the AI wants to do and why",
+      "Set timeout policies — if no human responds within 24 hours, escalate rather than auto-approve",
+      "Log every human override decision to improve the autonomy model over time",
+      "Never allow AI to modify its own approval thresholds without human consent"
+    ]
+  },
+  {
+    "id": "build-systems-not-tasks",
+    "number": 5,
+    "title": "Build Systems Not Tasks",
+    "description": "Build systems, not tasks — own AI systems for passive income.",
+    "implementation": "Each business is a deployable system with its own lifecycle.",
+    "source": "Autonomous business methodology",
+    "subRules": [
+      "Design every business as a self-contained system with inputs, processing, and outputs",
+      "Automate the entire lifecycle: discovery, creation, deployment, monitoring, and iteration",
+      "Favor recurring revenue models that generate income without per-transaction human effort",
+      "Build composable components that can be reused across multiple business systems"
+    ]
+  },
+  {
+    "id": "validation-loops",
+    "number": 6,
+    "title": "Validation Loops",
+    "description": "Every autonomous action must be verifiable and auditable.",
+    "implementation": "Execution logs, checkpoint history, automated test suites.",
+    "source": "PRP Framework validation methodology",
+    "subRules": [
+      "Run automated validation after every pipeline stage before proceeding",
+      "Store checkpoint snapshots so any stage can be rolled back and replayed",
+      "Implement health checks that run continuously, not just at deployment time",
+      "Use structured logging with correlation IDs to trace any action end-to-end"
+    ]
+  },
+  {
+    "id": "progressive-autonomy",
+    "number": 7,
+    "title": "Progressive Autonomy",
+    "description": "Start manual, automate incrementally, validate at each level.",
+    "implementation": "Phased deployment from manual to semi-auto to fully autonomous.",
+    "source": "Autonomous systems engineering",
+    "subRules": [
+      "Launch every new business in manual mode first — human does everything, AI observes",
+      "Graduate to semi-autonomous only after 10+ successful manual cycles with zero critical errors",
+      "Move to full autonomy only for actions with a proven track record of >99% success rate",
+      "Maintain a kill switch that instantly reverts any process to manual mode"
+    ]
+  },
+  {
+    "id": "multi-revenue-streams",
+    "number": 8,
+    "title": "Multi-Revenue Streams",
+    "description": "Don't depend on one income source.",
+    "implementation": "Pipeline supports multiple concurrent businesses with diversified revenue.",
+    "source": "Portfolio theory applied to autonomous business",
+    "subRules": [
+      "Run at least 3 businesses across different categories to reduce single-point-of-failure risk",
+      "Balance high-risk/high-reward ventures with stable recurring-revenue businesses",
+      "Track revenue correlation — if two businesses depend on the same platform, count them as one risk",
+      "Reinvest 20% of profits into launching new revenue streams quarterly"
+    ]
+  },
+  {
+    "id": "api-first-architecture",
+    "number": 9,
+    "title": "API-First Architecture",
+    "description": "Everything connected, everything automatable.",
+    "implementation": "All features exposed as API routes, webhook-driven integrations.",
+    "source": "Modern software architecture principles",
+    "subRules": [
+      "Expose every business capability as a documented REST or GraphQL API endpoint",
+      "Use webhooks for event-driven communication between services — never poll when you can push",
+      "Version all APIs from day one to allow safe iteration without breaking integrations",
+      "Design for composability — any two business systems should be connectable via API"
+    ]
+  },
+  {
+    "id": "fractal-organization",
+    "number": 10,
+    "title": "Fractal Organization",
+    "description": "Each business unit mirrors the whole, operates independently.",
+    "implementation": "Self-contained units with own monitoring, deployment, and revenue tracking.",
+    "source": "Fractal organizational theory",
+    "subRules": [
+      "Each business unit must have its own health dashboard, revenue tracking, and alerting",
+      "Design units to be deployable independently — no shared databases or tightly coupled services",
+      "Apply the same governance, validation, and autonomy rules at every level of the organization",
+      "Enable any single business unit to be sold, replicated, or shut down without affecting others"
+    ]
+  }
+]

@@ -1,0 +1,302 @@
+[
+  {
+    "id": "ai-prompt-library-store",
+    "category": "digital_products",
+    "title": "AI Prompt Library Store",
+    "description": "Curate and sell collections of high-quality, tested AI prompts for specific use cases like copywriting, coding, and image generation. Auto-generate variations and test effectiveness.",
+    "automationLevel": "high",
+    "tools": ["Stripe", "Next.js", "OpenAI API", "Gumroad"],
+    "estimatedRevenue": "$1,000-$10,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "notion-template-marketplace",
+    "category": "digital_products",
+    "title": "Notion Template Marketplace",
+    "description": "Design and sell premium Notion templates for business, productivity, and personal use. AI generates template variations and optimizes listings based on sales data.",
+    "automationLevel": "high",
+    "tools": ["Notion API", "Stripe", "Next.js", "Vercel"],
+    "estimatedRevenue": "$500-$15,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "ai-course-generator",
+    "category": "digital_products",
+    "title": "AI-Powered Course Platform",
+    "description": "Use AI to generate course outlines, scripts, and quizzes from expert content. Auto-produce video lessons with AI narration and sell via subscription.",
+    "automationLevel": "medium",
+    "tools": ["OpenAI API", "ElevenLabs", "Stripe", "Next.js", "S3"],
+    "estimatedRevenue": "$2,000-$50,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ai-stock-asset-generator",
+    "category": "digital_products",
+    "title": "AI Stock Asset Generator",
+    "description": "Generate and sell AI-created stock photos, illustrations, icons, and design assets. Automated pipeline from generation to quality check to marketplace listing.",
+    "automationLevel": "high",
+    "tools": ["Replicate", "Stable Diffusion", "Stripe", "S3", "Next.js"],
+    "estimatedRevenue": "$500-$8,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "custom-ai-agent-builder",
+    "category": "ai_as_a_service",
+    "title": "Custom AI Agent Builder",
+    "description": "Platform where businesses configure custom AI agents for their workflows — customer support, data entry, scheduling. Charge per agent per month.",
+    "automationLevel": "medium",
+    "tools": ["OpenAI API", "LangChain", "Next.js", "PostgreSQL", "Stripe"],
+    "estimatedRevenue": "$5,000-$100,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "ai-workflow-automation-agency",
+    "category": "ai_as_a_service",
+    "title": "AI Workflow Automation Agency",
+    "description": "Productized service that audits client workflows and deploys AI automations. Use templates to reduce delivery time. Recurring revenue from maintenance.",
+    "automationLevel": "medium",
+    "tools": ["n8n", "Make.com", "OpenAI API", "Slack API", "Stripe"],
+    "estimatedRevenue": "$3,000-$50,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ai-data-enrichment-api",
+    "category": "ai_as_a_service",
+    "title": "AI Data Enrichment API",
+    "description": "API service that enriches business data — company info, contact details, intent signals — using AI to aggregate and validate from multiple sources.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "OpenAI API", "PostgreSQL", "Redis", "Stripe"],
+    "estimatedRevenue": "$2,000-$30,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "ai-voice-agent-service",
+    "category": "ai_as_a_service",
+    "title": "AI Voice Agent Service",
+    "description": "Deploy AI voice agents for appointment booking, customer service, and lead qualification. Charge per minute or per successful interaction.",
+    "automationLevel": "high",
+    "tools": ["Twilio", "ElevenLabs", "OpenAI API", "Next.js", "PostgreSQL"],
+    "estimatedRevenue": "$5,000-$80,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "ai-youtube-channel",
+    "category": "content_automation",
+    "title": "AI Video YouTube Channel",
+    "description": "Fully automated YouTube channel producing educational or entertainment content. AI writes scripts, generates visuals, narrates, and schedules uploads.",
+    "automationLevel": "high",
+    "tools": ["OpenAI API", "ElevenLabs", "Replicate", "YouTube API", "FFmpeg"],
+    "estimatedRevenue": "$500-$20,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "automated-newsletter-platform",
+    "category": "content_automation",
+    "title": "Automated Newsletter Platform",
+    "description": "AI-curated newsletters for specific niches — AI reads hundreds of sources, summarizes key insights, and auto-sends to subscribers. Monetize via sponsorships and premium tiers.",
+    "automationLevel": "high",
+    "tools": ["OpenAI API", "Resend", "Next.js", "Stripe", "PostgreSQL"],
+    "estimatedRevenue": "$1,000-$15,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "ai-affiliate-blog-network",
+    "category": "content_automation",
+    "title": "AI Affiliate Blog Network",
+    "description": "Network of niche blogs generating SEO-optimized affiliate content. AI researches keywords, writes articles, and optimizes for conversions.",
+    "automationLevel": "high",
+    "tools": ["OpenAI API", "Next.js", "Vercel", "Google Search Console", "Ahrefs API"],
+    "estimatedRevenue": "$500-$10,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ai-podcast-producer",
+    "category": "content_automation",
+    "title": "AI Podcast Producer",
+    "description": "Generate podcast episodes from trending topics. AI writes scripts, creates realistic dialogue with multiple AI voices, and distributes to platforms.",
+    "automationLevel": "high",
+    "tools": ["OpenAI API", "ElevenLabs", "Spotify API", "S3", "Next.js"],
+    "estimatedRevenue": "$200-$5,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "social-media-content-engine",
+    "category": "content_automation",
+    "title": "Social Media Content Engine",
+    "description": "Automated social media management for multiple brands. AI generates posts, images, schedules content, and analyzes engagement across platforms.",
+    "automationLevel": "high",
+    "tools": ["OpenAI API", "Replicate", "Twitter API", "LinkedIn API", "Buffer API"],
+    "estimatedRevenue": "$1,000-$12,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "micro-saas-scheduling",
+    "category": "saas_micro_saas",
+    "title": "Micro-SaaS for Scheduling",
+    "description": "Niche scheduling tool for a specific industry (salons, clinics, tutors). AI handles smart scheduling, reminders, no-show prediction, and rebooking.",
+    "automationLevel": "medium",
+    "tools": ["Next.js", "PostgreSQL", "Stripe", "Twilio", "Vercel"],
+    "estimatedRevenue": "$2,000-$30,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ai-seo-tool",
+    "category": "saas_micro_saas",
+    "title": "AI SEO Analysis Tool",
+    "description": "SaaS tool that uses AI to analyze websites, generate SEO recommendations, write optimized meta tags, and track ranking improvements.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "OpenAI API", "PostgreSQL", "Stripe", "Google Search API"],
+    "estimatedRevenue": "$3,000-$50,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "api-monitoring-service",
+    "category": "saas_micro_saas",
+    "title": "API Monitoring Service",
+    "description": "Monitor API uptime, response times, and schema changes. Alert on anomalies. Niche focus on developer teams using specific platforms.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "PostgreSQL", "Redis", "Stripe", "Resend"],
+    "estimatedRevenue": "$1,000-$20,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ai-invoice-processor",
+    "category": "saas_micro_saas",
+    "title": "AI Invoice Processing Tool",
+    "description": "Automated invoice processing — OCR extraction, categorization, approval workflows, and accounting integration. Target small businesses and freelancers.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "OpenAI API", "Stripe", "PostgreSQL", "QuickBooks API"],
+    "estimatedRevenue": "$2,000-$40,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ai-code-review-bot",
+    "category": "saas_micro_saas",
+    "title": "AI Code Review Bot",
+    "description": "GitHub bot that performs automated code reviews using AI. Detects bugs, security issues, performance problems, and style violations. Subscription per repository.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "GitHub API", "OpenAI API", "Stripe", "PostgreSQL"],
+    "estimatedRevenue": "$1,000-$25,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "developer-tool-directory",
+    "category": "saas_micro_saas",
+    "title": "Developer Tool Comparison Platform",
+    "description": "AI-powered platform that compares developer tools, tracks pricing changes, and recommends alternatives. Monetize via affiliate and sponsored listings.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "PostgreSQL", "OpenAI API", "Stripe", "Vercel"],
+    "estimatedRevenue": "$500-$15,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "b2b-lead-marketplace",
+    "category": "marketplace_platform",
+    "title": "B2B Lead Generation Marketplace",
+    "description": "Connect businesses with verified leads in specific industries. AI scores and validates leads before listing. Charge per lead or subscription.",
+    "automationLevel": "medium",
+    "tools": ["Next.js", "Stripe Connect", "PostgreSQL", "OpenAI API", "Resend"],
+    "estimatedRevenue": "$3,000-$50,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "freelancer-niche-platform",
+    "category": "marketplace_platform",
+    "title": "Niche Freelancer Platform",
+    "description": "Vertical marketplace for a specific skill (AI engineers, blockchain devs, 3D artists). AI matches projects to freelancers and handles escrow.",
+    "automationLevel": "medium",
+    "tools": ["Next.js", "Stripe Connect", "PostgreSQL", "OpenAI API", "Vercel"],
+    "estimatedRevenue": "$2,000-$30,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "ai-tool-directory",
+    "category": "marketplace_platform",
+    "title": "AI Tool Directory & Reviews",
+    "description": "Curated directory of AI tools with automated reviews, pricing tracking, and comparison features. Monetize via listing fees, affiliate commissions, and featured placements.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "PostgreSQL", "OpenAI API", "Stripe", "Vercel"],
+    "estimatedRevenue": "$1,000-$20,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "dataset-marketplace",
+    "category": "marketplace_platform",
+    "title": "AI Training Dataset Marketplace",
+    "description": "Marketplace for buying and selling curated AI training datasets. AI validates data quality, generates previews, and handles secure delivery.",
+    "automationLevel": "medium",
+    "tools": ["Next.js", "Stripe Connect", "S3", "PostgreSQL", "Vercel"],
+    "estimatedRevenue": "$2,000-$40,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "print-on-demand-store",
+    "category": "ecommerce",
+    "title": "Print-on-Demand Store",
+    "description": "AI generates trendy designs, lists them on storefronts, and fulfills via print-on-demand. Automated from design to delivery with no inventory.",
+    "automationLevel": "high",
+    "tools": ["Printful API", "Shopify API", "Replicate", "Stripe", "Next.js"],
+    "estimatedRevenue": "$500-$15,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "ai-curated-dropshipping",
+    "category": "ecommerce",
+    "title": "AI-Curated Dropshipping Store",
+    "description": "AI identifies trending products, generates optimized listings, and manages supplier relationships. Automated order routing and customer service.",
+    "automationLevel": "medium",
+    "tools": ["Next.js", "Stripe", "AliExpress API", "OpenAI API", "Vercel"],
+    "estimatedRevenue": "$1,000-$30,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "digital-download-storefront",
+    "category": "ecommerce",
+    "title": "Digital Download Storefront",
+    "description": "Automated store selling digital products — wallpapers, fonts, presets, planners. AI generates products and optimizes listings based on sales performance.",
+    "automationLevel": "high",
+    "tools": ["Next.js", "Stripe", "S3", "OpenAI API", "Vercel"],
+    "estimatedRevenue": "$500-$10,000/mo",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "personalized-merch-store",
+    "category": "ecommerce",
+    "title": "Personalized Merchandise Store",
+    "description": "Customers input preferences, AI generates personalized designs for t-shirts, mugs, and accessories. Fulfilled via print-on-demand partners.",
+    "automationLevel": "medium",
+    "tools": ["Printful API", "Replicate", "Stripe", "Next.js", "Vercel"],
+    "estimatedRevenue": "$1,000-$20,000/mo",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "algo-trading-signals",
+    "category": "ai_trading_finance",
+    "title": "Algorithmic Trading Signals",
+    "description": "AI analyzes market data to generate trading signals for crypto or equities. Subscribers receive alerts via app/email. Charge subscription or performance fee.",
+    "automationLevel": "high",
+    "tools": ["Python", "TradingView API", "Binance API", "Next.js", "Stripe"],
+    "estimatedRevenue": "$2,000-$50,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "robo-advisory-platform",
+    "category": "ai_trading_finance",
+    "title": "Robo-Advisory Platform",
+    "description": "AI-driven portfolio management for retail investors. Automated rebalancing, tax-loss harvesting, and risk assessment. Subscription-based access.",
+    "automationLevel": "medium",
+    "tools": ["Next.js", "Plaid API", "Alpaca API", "PostgreSQL", "Stripe"],
+    "estimatedRevenue": "$5,000-$100,000/mo",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "financial-analytics-dashboard",
+    "category": "ai_trading_finance",
+    "title": "Financial Analytics Dashboard",
+    "description": "AI-powered financial analytics for small businesses. Automated P&L analysis, cash flow forecasting, and benchmarking against industry peers.",
+    "automationLevel": "medium",
+    "tools": ["Next.js", "Plaid API", "OpenAI API", "PostgreSQL", "Stripe"],
+    "estimatedRevenue": "$1,000-$20,000/mo",
+    "difficulty": "intermediate"
+  }
+]

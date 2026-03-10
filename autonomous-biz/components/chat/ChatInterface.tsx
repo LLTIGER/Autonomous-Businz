@@ -6,6 +6,7 @@ import { MessageBubble } from './MessageBubble'
 import { OpportunityCard } from './OpportunityCard'
 import { PRPPreview } from './PRPPreview'
 import { ApprovalGate } from './ApprovalGate'
+import { AgentRecommendation } from './AgentRecommendation'
 
 export function ChatInterface() {
   const { messages, status, sendMessage } = useChat()
@@ -117,6 +118,24 @@ export function ChatInterface() {
             {result.url as string}
           </a>
         </div>
+      )
+    }
+
+    if (result.recommendedAgents && result.platform) {
+      const r = result as {
+        platform: { name: string; website: string; channels: string[] }
+        recommendedAgents: { id: string; name: string; specialty: string; description: string; capabilities: string[]; autonomyScore: number }[]
+        recommendedBrain: { tier: string; price: string; model: string; tokenBudget: string } | null
+        totalMonthlyCost: string
+      }
+      return (
+        <AgentRecommendation
+          key={index}
+          platform={r.platform}
+          agents={r.recommendedAgents}
+          brain={r.recommendedBrain}
+          totalCost={r.totalMonthlyCost}
+        />
       )
     }
 

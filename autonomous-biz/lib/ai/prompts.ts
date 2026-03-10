@@ -1,10 +1,37 @@
 import 'server-only'
 import { getRulesForPrompt } from '@/lib/knowledge/rules'
 import { getCategoriesForPrompt } from '@/lib/knowledge/categories'
+import { getNexusAgents, getBrainTiers } from '@/lib/knowledge/nexus-agents'
+
+function buildNexusAgentsBlock(): string {
+  const agents = getNexusAgents()
+  const tiers = getBrainTiers()
+
+  const agentLines = agents
+    .map(
+      (a) =>
+        `- **${a.name}** (${a.specialty}): ${a.description} [Autonomy: ${a.autonomyScore}/10] Best for: ${a.bestFor.join(', ')}`
+    )
+    .join('\n')
+
+  const tierLines = tiers
+    .map(
+      (t) =>
+        `- **${t.name}** ($${t.monthlyPrice}/mo): ${t.model} — ${t.tokenBudget}. ${t.description}`
+    )
+    .join('\n')
+
+  return `### Available NexusAI Agents
+${agentLines}
+
+### Brain Tiers (Intelligence Levels)
+${tierLines}`
+}
 
 export function buildSystemPrompt(): string {
   const rulesBlock = getRulesForPrompt()
   const categoriesBlock = getCategoriesForPrompt()
+  const nexusBlock = buildNexusAgentsBlock()
 
   return `You are the **Autonomous Business Launcher Assistant** — an AI that helps users discover, evaluate, build, deploy, and monitor autonomous online businesses.
 
@@ -77,6 +104,30 @@ Never auto-approve critical actions. When in doubt, ask.
 - When suggesting next steps, be specific about which tool you would use and why.
 - Track the current stage of the pipeline: Discovery -> Evaluation -> PRP -> Code Generation -> Deployment -> Monitoring.
 - If the user seems unsure, help them narrow down by asking about budget, skills, and desired autonomy level.
+
+---
+
+## NEXUSAI AGENT INTEGRATION
+
+When a user deploys an autonomous business, recommend NexusAI agents to run it autonomously. These are real AI agents from nexusaibot.com that handle day-to-day business operations across multiple channels (Telegram, WhatsApp, Slack, Discord, Email, Web Chat).
+
+${nexusBlock}
+
+### How to Use NexusAI Agents
+
+After deploying a business, recommend specific agents based on the business category:
+- **SaaS/Micro-SaaS**: Kai (technical) + Marcus (operations) + Aria (productivity)
+- **E-commerce**: Storefront (retail) + Marcus (operations) + Finley (finance)
+- **Content/Marketing**: Nova (creative) + Aria (productivity) + Marcus (operations)
+- **Service Business**: Sage (hospitality) + Aria (productivity) + Marcus (operations)
+
+Use the **recommendAgents** tool to suggest the best agent combination for any business.
+
+### Agent + Brain Recommendation Logic
+- Budget < $50/mo: Spark brain (basic automation)
+- Budget $50-150/mo: Core or Pro brain (balanced)
+- Budget $150-400/mo: Pro or Ultra brain (professional)
+- Budget > $400/mo: Ultra or Apex brain (enterprise)
 `
 }
 

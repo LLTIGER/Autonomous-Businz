@@ -160,6 +160,67 @@ export async function POST(req: Request) {
           return { url: `https://${result.url}`, status: 'deployed' }
         },
       }),
+      recommendAgents: tool({
+        description:
+          'Recommend NexusAI agents to autonomously run a deployed business. Use after deployment or when user asks about AI agents for their business.',
+        inputSchema: z.object({
+          businessCategory: z
+            .string()
+            .describe(
+              'Business category: saas_micro_saas, digital_products, content_automation, ecommerce, marketplace, service_business, affiliate_marketing'
+            ),
+          monthlyBudget: z
+            .number()
+            .optional()
+            .describe('Monthly budget for agent services in USD'),
+        }),
+        execute: async ({ businessCategory, monthlyBudget }) => {
+          const {
+            recommendAgentsForBusiness,
+            recommendBrainTier,
+            getBrainTiers,
+            getNexusPlatform,
+          } = await import('@/lib/knowledge/nexus-agents')
+          const agents = recommendAgentsForBusiness(businessCategory)
+          const brain = monthlyBudget
+            ? recommendBrainTier(monthlyBudget)
+            : null
+          const allTiers = getBrainTiers()
+          const platform = getNexusPlatform()
+          return {
+            platform: {
+              name: platform.name,
+              website: platform.website,
+              channels: platform.channels,
+            },
+            recommendedAgents: agents.map((a) => ({
+              id: a.id,
+              name: a.name,
+              specialty: a.specialty,
+              description: a.description,
+              capabilities: a.capabilities,
+              autonomyScore: a.autonomyScore,
+            })),
+            recommendedBrain: brain
+              ? {
+                  tier: brain.name,
+                  price: `$${brain.monthlyPrice}/mo`,
+                  model: brain.model,
+                  tokenBudget: brain.tokenBudget,
+                }
+              : null,
+            allTiers: allTiers.map((t) => ({
+              name: t.name,
+              price: `$${t.monthlyPrice}/mo`,
+              model: t.model,
+            })),
+            totalMonthlyCost: brain
+              ? `$${brain.monthlyPrice * agents.length}/mo for ${agents.length} agents`
+              : 'Depends on brain tier selected',
+            provisioningUrl: platform.website,
+          }
+        },
+      }),
     },
     stopWhen: stepCountIs(5),
   })

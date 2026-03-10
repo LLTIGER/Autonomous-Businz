@@ -19,6 +19,7 @@ const navItems = [
       { label: 'Strategies', href: '/knowledge/strategies', icon: '\u{1F9E0}' },
       { label: 'Categories', href: '/knowledge/categories', icon: '\u{1F3F7}\uFE0F' },
       { label: 'Sources', href: '/knowledge/sources', icon: '\u{1F50C}' },
+      { label: 'AI Agents', href: '/knowledge/agents', icon: '\u{1F916}' },
     ],
   },
   {

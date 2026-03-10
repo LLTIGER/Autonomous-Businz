@@ -1,0 +1,145 @@
+{
+  "platform": {
+    "name": "NexusAI",
+    "website": "https://nexusaibot.com",
+    "description": "Managed AI agent SaaS providing personal AI assistants through containerized, multi-channel deployment",
+    "runtime": "OpenClaw (open-source personal AI agent framework)",
+    "infrastructure": "AWS ECS Fargate (containerized, one container per agent)",
+    "channels": ["Telegram", "WhatsApp", "Slack", "Discord", "Email", "Web Chat"]
+  },
+  "agents": [
+    {
+      "id": "aria",
+      "name": "Aria",
+      "category": "universal",
+      "specialty": "Productivity & Organization",
+      "description": "Your ultimate productivity partner. Calendar management, email triage, task prioritization, and workflow optimization.",
+      "capabilities": ["Calendar management", "Email triage", "Task prioritization", "Meeting scheduling", "Document organization", "Daily briefings"],
+      "bestFor": ["Solo founders", "Remote teams", "Executive assistants"],
+      "autonomyScore": 8
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus",
+      "category": "universal",
+      "specialty": "Business Operations",
+      "description": "Operations mastermind. Inventory tracking, customer support triage, invoicing, CRM management, and operational intelligence.",
+      "capabilities": ["Inventory tracking", "Customer support", "Invoicing", "CRM management", "KPI monitoring", "Process automation"],
+      "bestFor": ["E-commerce", "Service businesses", "Operations teams"],
+      "autonomyScore": 9
+    },
+    {
+      "id": "nova",
+      "name": "Nova",
+      "category": "universal",
+      "specialty": "Creative & Content",
+      "description": "Creative powerhouse. Social media management, content drafting, brand voice consistency, and marketing automation.",
+      "capabilities": ["Social media scheduling", "Content creation", "Brand voice", "Marketing campaigns", "Blog writing", "Visual content planning"],
+      "bestFor": ["Content businesses", "Marketing agencies", "Creators"],
+      "autonomyScore": 8
+    },
+    {
+      "id": "kai",
+      "name": "Kai",
+      "category": "universal",
+      "specialty": "Technical & DevOps",
+      "description": "Technical companion. GitHub integration, DevOps automation, code review assistance, and infrastructure monitoring.",
+      "capabilities": ["GitHub integration", "CI/CD monitoring", "Code review", "Infrastructure alerts", "Bug triage", "Documentation"],
+      "bestFor": ["SaaS businesses", "Dev teams", "Technical founders"],
+      "autonomyScore": 9
+    },
+    {
+      "id": "lexis",
+      "name": "Lexis",
+      "category": "specialist",
+      "specialty": "Legal & Compliance",
+      "description": "Legal assistant for contract review, compliance tracking, and regulatory updates.",
+      "capabilities": ["Contract review", "Compliance tracking", "Regulatory alerts", "Legal research", "Document drafting", "Deadline management"],
+      "bestFor": ["Legal firms", "Regulated industries", "Startups needing compliance"],
+      "autonomyScore": 6
+    },
+    {
+      "id": "finley",
+      "name": "Finley",
+      "category": "specialist",
+      "specialty": "Finance & Accounting",
+      "description": "Financial analyst and bookkeeper. Revenue tracking, expense categorization, financial reporting, and tax prep.",
+      "capabilities": ["Revenue tracking", "Expense categorization", "Financial reports", "Tax preparation", "Budget alerts", "Cash flow analysis"],
+      "bestFor": ["Accounting firms", "CFO offices", "Financial advisors"],
+      "autonomyScore": 7
+    },
+    {
+      "id": "storefront",
+      "name": "Storefront",
+      "category": "specialist",
+      "specialty": "Retail & E-commerce",
+      "description": "Retail operations expert. Inventory management, order processing, customer inquiries, and sales analytics.",
+      "capabilities": ["Inventory management", "Order processing", "Customer inquiries", "Sales analytics", "Pricing optimization", "Supplier coordination"],
+      "bestFor": ["E-commerce stores", "Retail chains", "Dropshipping"],
+      "autonomyScore": 9
+    },
+    {
+      "id": "sage",
+      "name": "Sage",
+      "category": "specialist",
+      "specialty": "Hospitality & Service",
+      "description": "Hospitality concierge. Booking management, guest communications, review responses, and service quality tracking.",
+      "capabilities": ["Booking management", "Guest communications", "Review responses", "Service scheduling", "Staff coordination", "Quality tracking"],
+      "bestFor": ["Hotels", "Restaurants", "Service businesses"],
+      "autonomyScore": 8
+    }
+  ],
+  "brainTiers": [
+    {
+      "id": "spark",
+      "name": "Spark",
+      "monthlyPrice": 29,
+      "model": "Haiku 4.5",
+      "tokenBudget": "3M tokens/mo",
+      "description": "Perfect for getting started. Basic automation and simple tasks.",
+      "bestFor": "Individual trials, simple automations"
+    },
+    {
+      "id": "core",
+      "name": "Core",
+      "monthlyPrice": 49,
+      "model": "Haiku → Sonnet (smart routing)",
+      "tokenBudget": "9M tokens/mo",
+      "description": "Smart model routing for balanced cost and capability.",
+      "bestFor": "Small teams, moderate workloads"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "monthlyPrice": 149,
+      "model": "Sonnet 4.5",
+      "tokenBudget": "30M tokens/mo",
+      "description": "Professional-grade intelligence for complex business operations.",
+      "bestFor": "Professionals, growing businesses"
+    },
+    {
+      "id": "ultra",
+      "name": "Ultra",
+      "monthlyPrice": 349,
+      "model": "Opus 4.5",
+      "tokenBudget": "90M tokens/mo",
+      "description": "Maximum intelligence for demanding autonomous operations.",
+      "bestFor": "Power users, complex workflows"
+    },
+    {
+      "id": "apex",
+      "name": "Apex",
+      "monthlyPrice": 799,
+      "model": "Unrestricted (all models)",
+      "tokenBudget": "300M tokens/mo",
+      "description": "Enterprise-grade with no limits. Full model access and priority support.",
+      "bestFor": "Enterprise, mission-critical operations"
+    }
+  ],
+  "integrationPoints": {
+    "provisioning": "POST /api/control-plane/provision-agent",
+    "management": "GET /api/control-plane/agent/{id}/status",
+    "channels": "POST /api/control-plane/agent/{id}/connect-channel",
+    "billing": "Stripe subscription with usage-based metering"
+  }
+}

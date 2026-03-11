@@ -1,51 +1,56 @@
-import Link from 'next/link'
+'use client'
 
-const sections = [
-  {
-    title: 'Golden Rules',
-    description: 'The 10 foundational rules for building and operating autonomous businesses safely and effectively.',
-    href: '/knowledge/rules',
-    icon: '\u{1F4CB}',
-    count: 10,
-    color: 'bg-amber-50 border-amber-200 hover:border-amber-400',
-    iconBg: 'bg-amber-100',
-  },
-  {
-    title: 'Strategies',
-    description: 'Curated business strategies across categories with automation levels, tools, and revenue estimates.',
-    href: '/knowledge/strategies',
-    icon: '\u{1F9E0}',
-    count: 30,
-    color: 'bg-blue-50 border-blue-200 hover:border-blue-400',
-    iconBg: 'bg-blue-100',
-  },
-  {
-    title: 'Categories',
-    description: 'Business categories ranked by autonomy score, with revenue models and key metrics.',
-    href: '/knowledge/categories',
-    icon: '\u{1F3F7}\uFE0F',
-    count: 7,
-    color: 'bg-purple-50 border-purple-200 hover:border-purple-400',
-    iconBg: 'bg-purple-100',
-  },
-  {
-    title: 'Sources',
-    description: 'Data sources and marketplace APIs used for discovering business opportunities.',
-    href: '/knowledge/sources',
-    icon: '\u{1F50C}',
-    count: 4,
-    color: 'bg-green-50 border-green-200 hover:border-green-400',
-    iconBg: 'bg-green-100',
-  },
-]
+import Link from 'next/link'
+import { useTranslation } from '@/lib/i18n/context'
 
 export default function KnowledgePage() {
+  const t = useTranslation()
+
+  const sections = [
+    {
+      title: t.knowledge.goldenRules,
+      description: t.knowledge.goldenRulesDesc,
+      href: '/knowledge/rules',
+      icon: '\u{1F4CB}',
+      count: 10,
+      color: 'bg-amber-50 border-amber-200 hover:border-amber-400',
+      iconBg: 'bg-amber-100',
+    },
+    {
+      title: t.knowledge.strategies,
+      description: t.knowledge.strategiesDesc,
+      href: '/knowledge/strategies',
+      icon: '\u{1F9E0}',
+      count: 30,
+      color: 'bg-blue-50 border-blue-200 hover:border-blue-400',
+      iconBg: 'bg-blue-100',
+    },
+    {
+      title: t.knowledge.categories,
+      description: t.knowledge.categoriesDesc,
+      href: '/knowledge/categories',
+      icon: '\u{1F3F7}\uFE0F',
+      count: 7,
+      color: 'bg-purple-50 border-purple-200 hover:border-purple-400',
+      iconBg: 'bg-purple-100',
+    },
+    {
+      title: t.knowledge.sources,
+      description: t.knowledge.sourcesDesc,
+      href: '/knowledge/sources',
+      icon: '\u{1F50C}',
+      count: 4,
+      color: 'bg-green-50 border-green-200 hover:border-green-400',
+      iconBg: 'bg-green-100',
+    },
+  ]
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Knowledge Base</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{t.knowledge.title}</h1>
         <p className="text-gray-500 text-lg">
-          Everything you need to know about building autonomous businesses.
+          {t.knowledge.description}
         </p>
       </div>
 
@@ -66,7 +71,7 @@ export default function KnowledgePage() {
                     {section.title}
                   </h2>
                   <span className="text-xs font-medium px-2.5 py-1 bg-white/80 rounded-full text-gray-600">
-                    {section.count} items
+                    {section.count} {t.knowledge.items}
                   </span>
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed">

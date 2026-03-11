@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslation } from '@/lib/i18n/context'
+
 interface Strategy {
   id: string
   category: string
@@ -25,22 +27,6 @@ const categoryColors: Record<string, string> = {
   ai_trading_finance: 'bg-green-100 text-green-700',
 }
 
-const categoryLabels: Record<string, string> = {
-  digital_products: 'Digital Products',
-  ai_as_a_service: 'AI-as-a-Service',
-  content_automation: 'Content Automation',
-  saas_micro_saas: 'SaaS / Micro-SaaS',
-  marketplace_platform: 'Marketplace',
-  ecommerce: 'E-Commerce',
-  ai_trading_finance: 'AI Trading',
-}
-
-const automationColors: Record<string, { bg: string; text: string; label: string }> = {
-  high: { bg: 'bg-green-100', text: 'text-green-700', label: 'High Automation' },
-  medium: { bg: 'bg-yellow-100', text: 'text-yellow-700', label: 'Medium Automation' },
-  low: { bg: 'bg-red-100', text: 'text-red-700', label: 'Low Automation' },
-}
-
 const difficultyColors: Record<string, string> = {
   beginner: 'bg-green-50 text-green-600',
   intermediate: 'bg-yellow-50 text-yellow-600',
@@ -48,28 +34,50 @@ const difficultyColors: Record<string, string> = {
 }
 
 export function StrategyCard({ strategy }: StrategyCardProps) {
+  const t = useTranslation()
+
+  const categoryLabels: Record<string, string> = {
+    digital_products: t.strategiesPage.digitalProducts,
+    ai_as_a_service: t.strategiesPage.aiAsAService,
+    content_automation: t.strategiesPage.contentAutomation,
+    saas_micro_saas: t.strategiesPage.saas,
+    marketplace_platform: t.strategiesPage.marketplace,
+    ecommerce: t.strategiesPage.ecommerce,
+    ai_trading_finance: t.strategiesPage.aiTrading,
+  }
+
+  const automationLabels: Record<string, string> = {
+    high: t.strategiesPage.highAutomation,
+    medium: t.strategiesPage.mediumAutomation,
+    low: t.strategiesPage.lowAutomation,
+  }
+
+  const automationColors: Record<string, { bg: string; text: string }> = {
+    high: { bg: 'bg-green-100', text: 'text-green-700' },
+    medium: { bg: 'bg-yellow-100', text: 'text-yellow-700' },
+    low: { bg: 'bg-red-100', text: 'text-red-700' },
+  }
+
   const automation = automationColors[strategy.automationLevel] || automationColors.medium
+  const automationLabel = automationLabels[strategy.automationLevel] || strategy.automationLevel
   const catColor = categoryColors[strategy.category] || 'bg-gray-100 text-gray-700'
   const catLabel = categoryLabels[strategy.category] || strategy.category
   const diffColor = difficultyColors[strategy.difficulty] || 'bg-gray-50 text-gray-600'
 
   return (
     <div className="border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow p-4 flex flex-col">
-      {/* Badges */}
       <div className="flex flex-wrap items-center gap-2 mb-3">
         <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${catColor}`}>
           {catLabel}
         </span>
         <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${automation.bg} ${automation.text}`}>
-          {automation.label}
+          {automationLabel}
         </span>
       </div>
 
-      {/* Title & description */}
       <h3 className="font-semibold text-gray-900 text-base mb-2">{strategy.title}</h3>
       <p className="text-sm text-gray-600 line-clamp-3 mb-3 flex-1">{strategy.description}</p>
 
-      {/* Revenue & difficulty */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-1.5">
           <span className="text-gray-400 text-sm">{'\u{1F4B0}'}</span>
@@ -80,7 +88,6 @@ export function StrategyCard({ strategy }: StrategyCardProps) {
         </span>
       </div>
 
-      {/* Tools */}
       <div className="flex flex-wrap gap-1.5">
         {strategy.tools.map((tool) => (
           <span

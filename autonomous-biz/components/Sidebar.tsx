@@ -3,31 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-
-const navItems = [
-  {
-    label: 'Chat',
-    href: '/chat',
-    icon: '\u{1F4AC}',
-  },
-  {
-    label: 'Knowledge',
-    href: '/knowledge',
-    icon: '\u{1F4DA}',
-    children: [
-      { label: 'Rules', href: '/knowledge/rules', icon: '\u{1F4CB}' },
-      { label: 'Strategies', href: '/knowledge/strategies', icon: '\u{1F9E0}' },
-      { label: 'Categories', href: '/knowledge/categories', icon: '\u{1F3F7}\uFE0F' },
-      { label: 'Sources', href: '/knowledge/sources', icon: '\u{1F50C}' },
-      { label: 'AI Agents', href: '/knowledge/agents', icon: '\u{1F916}' },
-    ],
-  },
-  {
-    label: 'Pipeline',
-    href: '/pipeline',
-    icon: '\u{1F680}',
-  },
-]
+import { useTranslation } from '@/lib/i18n/context'
+import { LanguageSwitcher } from './LanguageSwitcher'
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -35,6 +12,32 @@ export function Sidebar() {
   const [knowledgeOpen, setKnowledgeOpen] = useState(
     pathname.startsWith('/knowledge')
   )
+  const t = useTranslation()
+
+  const navItems = [
+    {
+      label: t.sidebar.chat,
+      href: '/chat',
+      icon: '\u{1F4AC}',
+    },
+    {
+      label: t.sidebar.knowledge,
+      href: '/knowledge',
+      icon: '\u{1F4DA}',
+      children: [
+        { label: t.sidebar.rules, href: '/knowledge/rules', icon: '\u{1F4CB}' },
+        { label: t.sidebar.strategies, href: '/knowledge/strategies', icon: '\u{1F9E0}' },
+        { label: t.sidebar.categories, href: '/knowledge/categories', icon: '\u{1F3F7}\uFE0F' },
+        { label: t.sidebar.sources, href: '/knowledge/sources', icon: '\u{1F50C}' },
+        { label: t.sidebar.aiAgents, href: '/knowledge/agents', icon: '\u{1F916}' },
+      ],
+    },
+    {
+      label: t.sidebar.pipeline,
+      href: '/pipeline',
+      icon: '\u{1F680}',
+    },
+  ]
 
   const isActive = (href: string) => {
     if (href === '/chat') return pathname === '/chat'
@@ -50,8 +53,8 @@ export function Sidebar() {
             A
           </div>
           <div>
-            <h1 className="text-white font-semibold text-lg leading-tight">ABL</h1>
-            <p className="text-gray-400 text-xs leading-tight">Autonomous Business Launcher</p>
+            <h1 className="text-white font-semibold text-lg leading-tight">{t.sidebar.brand}</h1>
+            <p className="text-gray-400 text-xs leading-tight">{t.sidebar.brandFull}</p>
           </div>
         </div>
       </div>
@@ -122,9 +125,10 @@ export function Sidebar() {
         })}
       </nav>
 
-      {/* Footer */}
-      <div className="px-6 py-4 border-t border-white/10">
-        <p className="text-gray-500 text-xs">v0.1.0 &middot; PRP Framework</p>
+      {/* Language Switcher + Footer */}
+      <div className="px-4 py-3 border-t border-white/10 space-y-3">
+        <LanguageSwitcher />
+        <p className="text-gray-500 text-xs px-2">{t.sidebar.footer}</p>
       </div>
     </div>
   )
@@ -135,7 +139,7 @@ export function Sidebar() {
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-surface-dark text-white shadow-lg"
-        aria-label="Toggle sidebar"
+        aria-label={t.sidebar.toggleSidebar}
       >
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           {mobileOpen ? (

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslation } from '@/lib/i18n/context'
 
 interface Rule {
   id: string
@@ -18,6 +19,7 @@ interface RuleCardProps {
 
 export function RuleCard({ rule }: RuleCardProps) {
   const [expanded, setExpanded] = useState(false)
+  const t = useTranslation()
 
   return (
     <div
@@ -27,7 +29,6 @@ export function RuleCard({ rule }: RuleCardProps) {
       onClick={() => setExpanded(!expanded)}
     >
       <div className="p-4">
-        {/* Header */}
         <div className="flex items-start gap-3">
           <div className="w-10 h-10 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
             {rule.number}
@@ -48,30 +49,26 @@ export function RuleCard({ rule }: RuleCardProps) {
           </svg>
         </div>
 
-        {/* Expanded content */}
         {expanded && (
           <div className="mt-4 space-y-4 border-t border-gray-100 pt-4">
-            {/* Implementation */}
             <div>
               <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                Implementation
+                {t.rules.implementation}
               </h4>
               <p className="text-sm text-gray-700">{rule.implementation}</p>
             </div>
 
-            {/* Source */}
             <div>
               <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                Source
+                {t.rules.source}
               </h4>
               <p className="text-sm text-gray-600 italic">{rule.source}</p>
             </div>
 
-            {/* Sub-rules */}
             {rule.subRules && rule.subRules.length > 0 && (
               <div>
                 <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  Sub-Rules
+                  {t.rules.subRules}
                 </h4>
                 <ul className="space-y-2">
                   {rule.subRules.map((subRule, index) => (

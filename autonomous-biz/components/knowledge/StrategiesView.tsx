@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { StrategyCard } from './StrategyCard'
+import { useTranslation } from '@/lib/i18n/context'
 
 interface Strategy {
   id: string
@@ -19,18 +20,19 @@ interface StrategiesViewProps {
   categories: string[]
 }
 
-const categoryLabels: Record<string, string> = {
-  digital_products: 'Digital Products',
-  ai_as_a_service: 'AI-as-a-Service',
-  content_automation: 'Content Automation',
-  saas_micro_saas: 'SaaS / Micro-SaaS',
-  marketplace_platform: 'Marketplace / Platform',
-  ecommerce: 'E-Commerce',
-  ai_trading_finance: 'AI Trading & Finance',
-}
-
 export function StrategiesView({ strategies, categories }: StrategiesViewProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const t = useTranslation()
+
+  const categoryLabels: Record<string, string> = {
+    digital_products: t.strategiesPage.digitalProducts,
+    ai_as_a_service: t.strategiesPage.aiAsAService,
+    content_automation: t.strategiesPage.contentAutomation,
+    saas_micro_saas: t.strategiesPage.saas,
+    marketplace_platform: t.strategiesPage.marketplacePlatform,
+    ecommerce: t.strategiesPage.ecommerce,
+    ai_trading_finance: t.strategiesPage.aiTradingFinance,
+  }
 
   const filtered = activeCategory
     ? strategies.filter((s) => s.category === activeCategory)
@@ -38,7 +40,6 @@ export function StrategiesView({ strategies, categories }: StrategiesViewProps) 
 
   return (
     <div>
-      {/* Category filter tabs */}
       <div className="flex flex-wrap gap-2 mb-6">
         <button
           onClick={() => setActiveCategory(null)}
@@ -48,7 +49,7 @@ export function StrategiesView({ strategies, categories }: StrategiesViewProps) 
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
           }`}
         >
-          All ({strategies.length})
+          {t.strategiesPage.all} ({strategies.length})
         </button>
         {categories.map((cat) => (
           <button
@@ -65,7 +66,6 @@ export function StrategiesView({ strategies, categories }: StrategiesViewProps) 
         ))}
       </div>
 
-      {/* Strategy grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((strategy) => (
           <StrategyCard key={strategy.id} strategy={strategy} />

@@ -1,4 +1,5 @@
 import { PipelineBoard } from '@/components/pipeline/PipelineBoard'
+import { T } from '@/components/TranslatedText'
 
 export const dynamic = 'force-dynamic'
 
@@ -18,12 +19,10 @@ interface Opportunity {
 
 async function getOpportunities(): Promise<Opportunity[]> {
   try {
-    // Use dynamic import to avoid build-time errors
     const { db } = await import('@/lib/db')
     const rows = db.prepare('SELECT * FROM opportunities ORDER BY created_at DESC').all()
     return rows as Opportunity[]
   } catch {
-    // Return empty array if DB not initialized yet
     return []
   }
 }
@@ -34,10 +33,8 @@ export default async function PipelinePage() {
   return (
     <div className="h-full flex flex-col">
       <div className="px-6 py-6 border-b border-gray-200 bg-white">
-        <h1 className="text-2xl font-bold text-gray-900">Pipeline</h1>
-        <p className="text-gray-500 text-sm mt-1">
-          Track your business opportunities from discovery to deployment.
-        </p>
+        <T section="pipeline" tkey="title" as="h1" className="text-2xl font-bold text-gray-900" />
+        <T section="pipeline" tkey="description" as="p" className="text-gray-500 text-sm mt-1" />
       </div>
 
       <div className="flex-1 overflow-hidden">

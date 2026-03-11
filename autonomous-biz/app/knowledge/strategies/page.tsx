@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { StrategiesView } from '@/components/knowledge/StrategiesView'
+import { T } from '@/components/TranslatedText'
 
 export interface Strategy {
   id: string
@@ -21,17 +22,13 @@ function getStrategies(): Strategy[] {
 
 export default function StrategiesPage() {
   const strategies = getStrategies()
-
-  // Get unique categories
   const categories = Array.from(new Set(strategies.map((s) => s.category)))
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Business Strategies</h1>
-        <p className="text-gray-500 text-lg">
-          {strategies.length} curated strategies across {categories.length} categories.
-        </p>
+        <T section="strategiesPage" tkey="title" as="h1" className="text-3xl font-bold text-gray-900 mb-2" />
+        <T section="strategiesPage" tkey="description" as="p" className="text-gray-500 text-lg" replacements={{ count: strategies.length, catCount: categories.length }} />
       </div>
 
       <StrategiesView strategies={strategies} categories={categories} />

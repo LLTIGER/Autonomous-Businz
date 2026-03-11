@@ -1,6 +1,7 @@
 'use client'
 
 import { BusinessCard } from './BusinessCard'
+import { useTranslation } from '@/lib/i18n/context'
 
 interface Opportunity {
   id: string
@@ -20,16 +21,18 @@ interface PipelineBoardProps {
   opportunities: Opportunity[]
 }
 
-const columns = [
-  { id: 'discovered', label: 'Discovered', color: 'bg-gray-100 border-gray-300' },
-  { id: 'selected', label: 'Selected', color: 'bg-blue-50 border-blue-300' },
-  { id: 'prp_created', label: 'PRP Created', color: 'bg-purple-50 border-purple-300' },
-  { id: 'generating', label: 'Generating', color: 'bg-yellow-50 border-yellow-300' },
-  { id: 'deployed', label: 'Deployed', color: 'bg-green-50 border-green-300' },
-  { id: 'running', label: 'Running', color: 'bg-emerald-50 border-emerald-300' },
-]
-
 export function PipelineBoard({ opportunities }: PipelineBoardProps) {
+  const t = useTranslation()
+
+  const columns = [
+    { id: 'discovered', label: t.pipeline.discovered, color: 'bg-gray-100 border-gray-300' },
+    { id: 'selected', label: t.pipeline.selected, color: 'bg-blue-50 border-blue-300' },
+    { id: 'prp_created', label: t.pipeline.prpCreated, color: 'bg-purple-50 border-purple-300' },
+    { id: 'generating', label: t.pipeline.generating, color: 'bg-yellow-50 border-yellow-300' },
+    { id: 'deployed', label: t.pipeline.deployed, color: 'bg-green-50 border-green-300' },
+    { id: 'running', label: t.pipeline.running, color: 'bg-emerald-50 border-emerald-300' },
+  ]
+
   const getColumnItems = (columnId: string) =>
     opportunities.filter((o) => o.status === columnId)
 
@@ -42,7 +45,6 @@ export function PipelineBoard({ opportunities }: PipelineBoardProps) {
             key={column.id}
             className="flex-shrink-0 w-72 flex flex-col"
           >
-            {/* Column header */}
             <div className={`flex items-center justify-between px-3 py-2.5 rounded-t-lg border-t-2 ${column.color}`}>
               <h3 className="text-sm font-semibold text-gray-700">{column.label}</h3>
               <span className="text-xs font-medium px-2 py-0.5 bg-white/80 rounded-full text-gray-600">
@@ -50,11 +52,10 @@ export function PipelineBoard({ opportunities }: PipelineBoardProps) {
               </span>
             </div>
 
-            {/* Column body */}
             <div className="flex-1 bg-gray-50/50 rounded-b-lg border border-t-0 border-gray-200 p-2 space-y-2 overflow-y-auto min-h-[200px]">
               {items.length === 0 ? (
                 <div className="flex items-center justify-center h-32 text-sm text-gray-400">
-                  <p>No items</p>
+                  <p>{t.pipeline.noItems}</p>
                 </div>
               ) : (
                 items.map((item) => (

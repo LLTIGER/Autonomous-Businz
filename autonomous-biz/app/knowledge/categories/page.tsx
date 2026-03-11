@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { CategoryTree } from '@/components/knowledge/CategoryTree'
+import { T } from '@/components/TranslatedText'
 
 export interface Category {
   id: string
@@ -25,10 +26,8 @@ export default function CategoriesPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Business Categories</h1>
-        <p className="text-gray-500 text-lg">
-          {categories.length} categories ranked by autonomy potential.
-        </p>
+        <T section="categoriesPage" tkey="title" as="h1" className="text-3xl font-bold text-gray-900 mb-2" />
+        <T section="categoriesPage" tkey="description" as="p" className="text-gray-500 text-lg" replacements={{ count: categories.length }} />
       </div>
 
       <CategoryTree categories={categories} />

@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslation } from '@/lib/i18n/context'
+
 interface Opportunity {
   id: string
   title: string
@@ -33,23 +35,24 @@ function getSourceColor(source: string) {
   }
 }
 
-function getSourceLabel(source: string) {
-  switch (source.toLowerCase()) {
-    case 'marketplace':
-    case 'empire_flippers':
-      return 'Marketplace'
-    case 'ai-generated':
-    case 'ai':
-      return 'AI Generated'
-    case 'product_hunt':
-      return 'Product Hunt'
-    default:
-      return source
-  }
-}
-
 export function OpportunityCard({ opportunity, onSelect }: OpportunityCardProps) {
+  const t = useTranslation()
   const scorePercent = (opportunity.autonomyScore / 10) * 100
+
+  function getSourceLabel(source: string) {
+    switch (source.toLowerCase()) {
+      case 'marketplace':
+      case 'empire_flippers':
+        return t.opportunity.marketplace
+      case 'ai-generated':
+      case 'ai':
+        return t.opportunity.aiGenerated
+      case 'product_hunt':
+        return t.opportunity.productHunt
+      default:
+        return source
+    }
+  }
 
   return (
     <div className="border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow p-4">
@@ -75,7 +78,6 @@ export function OpportunityCard({ opportunity, onSelect }: OpportunityCardProps)
         </p>
       )}
 
-      {/* Metrics */}
       <div className="flex items-center gap-4 mb-3 text-sm">
         {opportunity.estimatedRevenue && (
           <div className="flex items-center gap-1">
@@ -85,7 +87,7 @@ export function OpportunityCard({ opportunity, onSelect }: OpportunityCardProps)
         )}
         {opportunity.autonomyScore > 0 && (
           <div className="flex items-center gap-2">
-            <span className="text-gray-400 text-xs">Autonomy</span>
+            <span className="text-gray-400 text-xs">{t.opportunity.autonomy}</span>
             <div className="flex items-center gap-1">
               <div className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div
@@ -115,14 +117,14 @@ export function OpportunityCard({ opportunity, onSelect }: OpportunityCardProps)
             rel="noopener noreferrer"
             className="text-xs text-brand-500 hover:underline"
           >
-            View listing {'\u2197'}
+            {t.opportunity.viewListing} {'\u2197'}
           </a>
         )}
         <button
           onClick={() => onSelect(opportunity.id)}
           className="ml-auto px-4 py-1.5 bg-brand-500 text-white text-sm font-medium rounded-lg hover:bg-brand-600 transition-colors"
         >
-          Select This Opportunity
+          {t.opportunity.selectThis}
         </button>
       </div>
     </div>

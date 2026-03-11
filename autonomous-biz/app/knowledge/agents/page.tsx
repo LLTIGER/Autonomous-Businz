@@ -1,31 +1,77 @@
-import { getNexusAgents, getBrainTiers, getNexusPlatform } from '@/lib/knowledge/nexus-agents'
+'use client'
+
+import { useTranslation } from '@/lib/i18n/context'
+import { useState, useEffect } from 'react'
+
+interface Agent {
+  id: string
+  name: string
+  specialty: string
+  description: string
+  capabilities: string[]
+  autonomyScore: number
+  category: string
+  bestFor: string[]
+}
+
+interface BrainTier {
+  id: string
+  name: string
+  monthlyPrice: number
+  model: string
+  tokenBudget: string
+  bestFor: string
+}
+
+interface Platform {
+  name: string
+  website: string
+  channels: string[]
+}
 
 export default function AgentsPage() {
-  const platform = getNexusPlatform()
-  const agents = getNexusAgents()
-  const tiers = getBrainTiers()
+  const t = useTranslation()
+  const [agents, setAgents] = useState<Agent[]>([])
+  const [tiers, setTiers] = useState<BrainTier[]>([])
+  const [platform, setPlatform] = useState<Platform>({ name: '', website: '', channels: [] })
+
+  useEffect(() => {
+    fetch('/api/knowledge/agents')
+      .then((r) => r.json())
+      .then((data) => {
+        setAgents(data.agents)
+        setTiers(data.tiers)
+        setPlatform(data.platform)
+      })
+      .catch(() => {})
+  }, [])
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">NexusAI Agents</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{t.agents.title}</h1>
         <p className="text-gray-600">
-          AI agents from{' '}
-          <a
-            href={platform.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-500 underline hover:text-brand-600"
-          >
-            {platform.name}
-          </a>{' '}
-          that autonomously run your deployed businesses across {platform.channels.join(', ')}.
+          {t.agents.intro
+            .replace('{platform}', platform.name)
+            .replace('{channels}', platform.channels.join(', '))}
+          {platform.website && (
+            <>
+              {' '}
+              <a
+                href={platform.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-500 underline hover:text-brand-600"
+              >
+                {platform.name}
+              </a>
+            </>
+          )}
         </p>
       </div>
 
-      {/* Agent Cards */}
       <section className="mb-12">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Available Agents</h2>
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">{t.agents.availableAgents}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {agents.map((agent) => (
             <div
@@ -59,16 +105,16 @@ export default function AgentsPage() {
                 ))}
                 {agent.capabilities.length > 4 && (
                   <span className="text-xs text-gray-400">
-                    +{agent.capabilities.length - 4} more
+                    {t.agents.more.replace('{count}', String(agent.capabilities.length - 4))}
                   </span>
                 )}
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-gray-500">
-                  Best for: {agent.bestFor.join(', ')}
+                  {t.agents.bestFor}{agent.bestFor.join(', ')}
                 </span>
                 <span className="font-semibold text-brand-600">
-                  Autonomy: {agent.autonomyScore}/10
+                  {t.agents.autonomy}{agent.autonomyScore}/10
                 </span>
               </div>
             </div>
@@ -76,28 +122,25 @@ export default function AgentsPage() {
         </div>
       </section>
 
-      {/* Brain Tiers */}
       <section>
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Brain Tiers</h2>
-        <p className="text-sm text-gray-500 mb-4">
-          Each agent requires a brain tier that determines its intelligence level and capacity.
-        </p>
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">{t.agents.brainTiers}</h2>
+        <p className="text-sm text-gray-500 mb-4">{t.agents.brainDescription}</p>
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Tier</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Price</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Model</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Token Budget</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Best For</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">{t.agents.tier}</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">{t.agents.price}</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">{t.agents.model}</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">{t.agents.tokenBudget}</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">{t.agents.bestForCol}</th>
               </tr>
             </thead>
             <tbody>
               {tiers.map((tier) => (
                 <tr key={tier.id} className="border-b border-gray-100 hover:bg-gray-50">
                   <td className="py-3 px-4 font-semibold text-brand-600">{tier.name}</td>
-                  <td className="py-3 px-4 font-mono">${tier.monthlyPrice}/mo</td>
+                  <td className="py-3 px-4 font-mono">${tier.monthlyPrice}{t.agents.perMonth}</td>
                   <td className="py-3 px-4">{tier.model}</td>
                   <td className="py-3 px-4">{tier.tokenBudget}</td>
                   <td className="py-3 px-4 text-gray-500">{tier.bestFor}</td>
